@@ -37,3 +37,6 @@ Para reproducir el entrenamiento del modelo:
 2. Descargar el archivo de datos original desde Kaggle y ubicarlo en la ruta correspondiente (o conectar Google Drive si se usa Colab).
 3. Instalar las dependencias (Scikit-learn, Pandas, Numpy).
 4. Ejecutar todas las celdas del archivo `modelo.ipynb`.
+
+<img width="862" height="112" alt="image" src="https://github.com/user-attachments/assets/63e80f1b-a465-4888-bf0b-9c0e7d7567cd" />
+
