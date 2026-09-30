@@ -40,3 +40,13 @@ Para reproducir el entrenamiento del modelo:
 
 <img width="862" height="112" alt="image" src="https://github.com/user-attachments/assets/63e80f1b-a465-4888-bf0b-9c0e7d7567cd" />
 
+# Fase 1 - Integrador de Modelos
+
+En esta carpeta se encuentra el notebook con el análisis, preprocesamiento y entrenamiento del modelo para la predicción de precios de viajes.
+
+**Nota sobre el modelo entrenado:** 
+Debido a restricciones de tamaño de GitHub (el archivo supera los 25MB), el modelo exportado (`modelo_rideshare.pkl`) se encuentra alojado externamente. 
+
+Puedes descargarlo desde el siguiente enlace:
+[Descargar modelo_rideshare.pkl desde Google Drive](https://drive.google.com/drive/folders/1jTNGCb77BmaIJBxe4DCePaY-6ul8L-ni?usp=drive_link)
+
