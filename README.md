@@ -1,4 +1,3 @@
-# Fase 1: Modelo Predictivo - Predicción de Tarifas (Uber/Lyft)
 
 # Fase 1: Modelo Predictivo - Predicción de Tarifas (Uber/Lyft)
 
