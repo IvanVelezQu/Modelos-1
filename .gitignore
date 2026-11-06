@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+**/data/rideshare_kaggle.csv
+**/data/*.zip
+**/models/**/*.pkl
+**/models/**/*.joblib
+**/outputs/*.csv
