@@ -1,51 +1,33 @@
 # Fase 1: Modelo Predictivo - Predicción de Tarifas (Uber/Lyft)
 
-Este directorio contiene los entregables correspondientes a la **Fase 1** del Proyecto Integrador del curso Modelos y Simulación de Sistemas I.
+# Fase 1: Modelo Predictivo - Predicción de Tarifas (Uber/Lyft)
 
-## Equipo de Trabajo
-- Jorge Iván Vélez Quintero (GitHub: IvanVelezQu)
+Este directorio contiene los entregables corregidos de la **Fase 1** del Proyecto Integrador del curso Modelos y Simulación de Sistemas I.
 
-##  Descripción del Problema
-El objetivo de este proyecto es predecir el precio (`price`) de los servicios de transporte compartido (Uber y Lyft) en la ciudad de Boston. Para ello, se ha planteado un problema de **regresión** utilizando características como la distancia del viaje, el multiplicador de tarifa dinámica, las condiciones meteorológicas (temperatura) y el tipo de servicio.
+## Autor
+- Jorge Iván Vélez Quintero (`IvanVelezQu`)
 
-El conjunto de datos original fue obtenido desde [Kaggle: Uber and Lyft Dataset Boston, MA](https://www.kaggle.com/datasets/brllrb/uber-and-lyft-dataset-boston-ma).
+## Descripción del Problema y Datos
+El objetivo es predecir el precio (`price`) de viajes en plataformas de movilidad (Uber y Lyft) en Boston mediante un modelo de **regresión** utilizando las variables predictoras `distance`, `surge_multiplier`, `temperature`, `cab_type` y `name`.
 
-## Cumplimiento de Requisitos del Dataset
-- **Observaciones:** > 1.000 registros.
-- **Variables predictoras:** > 5 (incluyendo `distance`, `surge_multiplier`, `temperature`, `cab_type`, `name`).
-- **Valores Nulos:** La variable predictora `temperature` contiene un **1.4999%** de valores faltantes (cumpliendo el rango exigido del 0.1% al 2%).
-- **Series de tiempo:** El enfoque es transversal, no secuencial.
+- **Fuente del dataset:** [Kaggle - Uber and Lyft Dataset Boston, MA](https://www.kaggle.com/datasets/brllrb/uber-and-lyft-dataset-boston-ma)
+- **Ubicación esperada:** Descargar el archivo `rideshare_kaggle.csv` y ubicarlo en `data/rideshare_kaggle.csv`.
+- **Aclaración sobre valores faltantes:** Originalmente la variable `temperature` no presentaba valores faltantes tras limpiar los nulos de la variable objetivo (`price`). Para cumplir con el requisito académico (0.1 % a 2 % de nulos en una variable predictora), **estos nulos se generan artificialmente en el código** inyectando un **1.5 %** de valores faltantes aleatorios (`seed=42`), los cuales se imputan con la media dentro del pipeline de entrenamiento.
 
-## Estructura del Directorio
-- `modelo.ipynb`: Notebook de Jupyter completamente ejecutable que detalla el proceso de exploración de datos (EDA), preprocesamiento, prevención de fuga de información y entrenamiento del modelo.
-- `modelo_rideshare.pkl`: Archivo serializado que contiene el pipeline de preprocesamiento y el modelo de Machine Learning entrenado (Random Forest Regressor).
+## Estructura de Archivos Corregida
+- `Fase_1_integrador_modelos.ipynb`: Notebook ejecutable con el análisis exploratorio (EDA), inyección e imputación de nulos, comparación con modelo base y serialización.
+- `modelo_rideshare.pkl`: Artefacto del pipeline entrenado (alojado en enlace externo documentado debido a su tamaño).
 
-## Preprocesamiento y Prevención de Fuga de Información (Data Leakage)
-Para garantizar la integridad del modelo y evitar fugas de información, se implementó la división de datos (`train_test_split`) **antes** de aplicar cualquier transformación. 
+## Dependencias
+Python 3.11+ con los paquetes: `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn` y `joblib`.
 
-Posteriormente, se diseñó un `Pipeline` de Scikit-Learn que integra:
-1. **Datos Numéricos:** Imputación de nulos con la media y estandarización (`StandardScaler`).
-2. **Datos Categóricos:** Imputación con el valor más frecuente y codificación *One-Hot* (`OneHotEncoder`).
+## Resultados y Comparación con Baseline
+| Modelo | RMSE (USD) | R² |
+| :--- | :---: | :---: |
+| **Baseline (`DummyRegressor` - media)** | ~9.32 | 0.0000 |
+| **Random Forest Regressor (`n_estimators=50`)** | **1.963** | **0.9558** |
 
-## Modelo y Evaluación
-Se utilizó un modelo **Random Forest Regressor** ensamblado dentro del pipeline. 
-*(Nota: Añadan aquí los resultados de las métricas RMSE y R2 que les arrojó el notebook en la celda de evaluación).*
-
-## Instrucciones de Ejecución
-Para reproducir el entrenamiento del modelo:
-1. Clonar el repositorio.
-2. Descargar el archivo de datos original desde Kaggle y ubicarlo en la ruta correspondiente (o conectar Google Drive si se usa Colab).
-3. Instalar las dependencias (Scikit-learn, Pandas, Numpy).
-4. Ejecutar todas las celdas del archivo `modelo.ipynb`.
-
-<img width="862" height="112" alt="image" src="https://github.com/user-attachments/assets/63e80f1b-a465-4888-bf0b-9c0e7d7567cd" />
-
-# Fase 1 - Integrador de Modelos
-
-En esta carpeta se encuentra el notebook con el análisis, preprocesamiento y entrenamiento del modelo para la predicción de precios de viajes.
-
-**Nota sobre el modelo entrenado:** 
-Debido a restricciones de tamaño de GitHub (el archivo supera los 25MB), el modelo exportado (`modelo_rideshare.pkl`) se encuentra alojado externamente. 
+Un RMSE de 1.963 USD indica que las predicciones se desvían en promedio ~1.96 dólares respecto a la tarifa real.
 
 Puedes descargarlo desde el siguiente enlace:
 [Descargar modelo_rideshare.pkl desde Google Drive](https://drive.google.com/drive/folders/1jTNGCb77BmaIJBxe4DCePaY-6ul8L-ni?usp=drive_link)
