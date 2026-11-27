@@ -1,0 +1,6 @@
+distance,surge_multiplier,temperature,cab_type,name
+2.5,1.0,42.0,Uber,UberX
+1.2,1.25,,Lyft,Lyft
+3.8,1.0,38.5,Uber,Black SUV
+0.8,1.5,45.1,Lyft,Shared
+4.1,1.0,39.9,Uber,UberXL
