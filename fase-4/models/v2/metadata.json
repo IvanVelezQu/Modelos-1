@@ -1,0 +1,62 @@
+{
+    "version": "v2",
+    "created_at_utc": "2026-11-06T20:39:17.087458+00:00",
+    "problem_type": "regression",
+    "target_variable": "price",
+    "algorithm": "RandomForestRegressor",
+    "baseline_algorithm": "DummyRegressor(strategy='mean')",
+    "input_features": {
+        "ordered_columns": [
+            "distance",
+            "surge_multiplier",
+            "temperature",
+            "cab_type",
+            "name"
+        ],
+        "numeric_features": [
+            "distance",
+            "surge_multiplier",
+            "temperature"
+        ],
+        "categorical_features": [
+            "cab_type",
+            "name"
+        ],
+        "expected_types": {
+            "distance": "float64",
+            "surge_multiplier": "float64",
+            "temperature": "float64",
+            "cab_type": "string/categorical",
+            "name": "string/categorical"
+        }
+    },
+    "model_parameters": {
+        "n_estimators": 30,
+        "max_depth": 15,
+        "random_state": 42
+    },
+    "missing_values_strategy": {
+        "numeric": "SimpleImputer(strategy='mean')",
+        "categorical": "SimpleImputer(strategy='most_frequent')",
+        "note": "Incluye 1.5% de valores faltantes controlados en 'temperature' durante entrenamiento."
+    },
+    "data_info": {
+        "source": "Kaggle - Uber and Lyft Dataset Boston, MA",
+        "file_path": "data/rideshare_kaggle.csv",
+        "total_valid_observations": 637976,
+        "train_observations": 510380,
+        "test_observations": 127596,
+        "split_strategy": "train_test_split (random_state fijo)",
+        "test_size_ratio": 0.2
+    },
+    "evaluation_metrics": [
+        "rmse",
+        "mae",
+        "r2"
+    ],
+    "environment": {
+        "python_version": "3.13.18",
+        "dependencies_file": "requirements.txt",
+        "git_commit_hash": "872f6bd"
+    }
+}
